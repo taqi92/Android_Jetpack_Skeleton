@@ -1,29 +1,29 @@
-package co.basic.androidjetpackskeleton.ui.home
+package co.basic.androidjetpackskeleton.ui.topRated
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.support.v4.app.Fragment
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import co.basic.androidjetpackskeleton.R
 
-class HomeFragment : Fragment() {
+class TopRatedFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var topRatedViewModel: TopRatedViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        topRatedViewModel =
+                ViewModelProviders.of(this).get(TopRatedViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        topRatedViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

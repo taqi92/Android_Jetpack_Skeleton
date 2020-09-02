@@ -7,19 +7,26 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="co.basic.androidjetpackskeleton.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:name="co.basic.androidjetpackskeleton.ui.topRated.TopRatedFragment"
+        android:label="@string/title_new_release"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="co.basic.androidjetpackskeleton.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:name="co.basic.androidjetpackskeleton.ui.newRelease.NewReleaseFragment"
+        android:label="@string/title_top_rated"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="co.basic.androidjetpackskeleton.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:name="co.basic.androidjetpackskeleton.ui.upcoming.UpcomingFragment"
+        android:label="@string/title_upcoming"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="co.basic.androidjetpackskeleton.ui.favourites.FavouritesFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourites" />
+
+
 </navigation>
