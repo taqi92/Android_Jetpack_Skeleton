@@ -21,7 +21,7 @@ class TopRatedFragment : Fragment() {
     ): View? {
         topRatedViewModel =
                 ViewModelProviders.of(this).get(TopRatedViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_top_rated, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         topRatedViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

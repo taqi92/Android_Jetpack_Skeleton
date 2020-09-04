@@ -1,7 +1,8 @@
-package co.basic.androidjetpackskeleton
+package co.basic.androidjetpackskeleton.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import co.basic.androidjetpackskeleton.R
 
 class MovieDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
