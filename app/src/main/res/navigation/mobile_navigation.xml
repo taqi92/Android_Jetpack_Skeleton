@@ -9,7 +9,12 @@
         android:id="@+id/navigation_new_release"
         android:name="co.basic.androidjetpackskeleton.ui.newRelease.NewReleaseFragment"
         android:label="@string/title_new_release"
-        tools:layout="@layout/fragment_new_release" />
+        tools:layout="@layout/fragment_new_release" >
+        <action
+            android:id="@+id/action_navigation_new_release_to_movieDetailActivity"
+            app:destination="@id/movieDetailActivity" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_top_rated"
@@ -27,6 +32,15 @@
         android:name="co.basic.androidjetpackskeleton.ui.favourites.FavouritesFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" />
+    <activity
+        android:id="@+id/movieDetailActivity"
+        android:name="co.basic.androidjetpackskeleton.activities.MovieDetailActivity"
+        android:label="activity_movie_detail"
+        tools:layout="@layout/activity_movie_detail" >
+        <argument
+            android:name="movieId"
+            app:argType="integer"/>
+    </activity>
 
 
 </navigation>
