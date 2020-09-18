@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.basic.androidjetpackskeleton.R
 import co.basic.androidjetpackskeleton.adapters.RecyclerViewAdapter
+import co.basic.androidjetpackskeleton.model.Data
+import co.basic.androidjetpackskeleton.ui.newRelease.OnItemClickListener
+import java.util.ArrayList
 
-class UpcomingFragment : Fragment() {
+class UpcomingFragment : Fragment(),RecyclerViewAdapter.ClickListener,OnItemClickListener {
 
     private lateinit var upcomingViewModel: UpcomingViewModel
 
@@ -40,12 +43,20 @@ class UpcomingFragment : Fragment() {
         upcomingViewModel.getUpcomingMovies()?.observe(viewLifecycleOwner, {
             it?.let {
 
-                adapter = context?.let { it1 -> RecyclerViewAdapter(it1, it.results) }
+                adapter = context?.let { it1 -> RecyclerViewAdapter(it1, it.results,this) }
                 rvUpcoming?.adapter = adapter
             } ?: run { Toast.makeText(context, "Network error!!", Toast.LENGTH_LONG).show() }
         })
 
 
         return root
+    }
+
+    override fun onClickListener(item: ArrayList<Data>) {
+        Toast.makeText(context, "worked in updated!", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun <T> onItemClick(position: Int, data: T) {
+        //TODO("Not yet implemented")
     }
 }

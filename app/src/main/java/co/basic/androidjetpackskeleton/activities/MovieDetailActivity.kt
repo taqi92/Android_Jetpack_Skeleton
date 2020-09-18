@@ -2,6 +2,7 @@ package co.basic.androidjetpackskeleton.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -19,11 +20,13 @@ class MovieDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
+
         movieDetailViewModel = ViewModelProvider(this).get(MovieDetailViewModel::class.java)
 
-        val number = args.movieId
+        //val number = args.movieId
 
-        Log.d("movieId", number.toString())
+        //Log.d("movieId", number.toString())
+
 
         /*movieDetailViewModel.getMovieDetail()?.observe(viewLifecycleOwner(),{
 
@@ -35,15 +38,15 @@ class MovieDetailActivity : AppCompatActivity() {
         })*/
 
 
-        movieDetailViewModel.getMovieDetail()?.observe(this, {
+        /*movieDetailViewModel.getMovieDetail(number)?.observe(this, {
 
             it.let {
 
                 var budget: String = it.originalTitle
-                Log.d("tag", budget)
+                //Log.d("tag", budget)
             }
 
-        })
+        })*/
 
 
     }

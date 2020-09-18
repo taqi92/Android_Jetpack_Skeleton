@@ -16,18 +16,25 @@ class MovieDetailViewModel : ViewModel() {
 
     private var movieDetail: MutableLiveData<MovieDetail>? = null
 
-    fun getMovieDetail(): LiveData<MovieDetail>? {
 
-        loadData()
+    var movie : Int = 0
+
+    fun getMovieDetail(movieId: Int): LiveData<MovieDetail>? {
+
+
+        this.movie = movieId
+
+        loadData(movieId)
 
         return movieDetail
     }
 
-    private fun loadData() {
+
+    private fun loadData(movieId: Int) {
 
         val api: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
 
-        val call: Call<MovieDetail> = api.getMovieDetail("259316",GlobalValues().apiKey)
+        val call: Call<MovieDetail> = api.getMovieDetail(movieId,GlobalValues.apiKey)
         call.enqueue(object : Callback<MovieDetail> {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
 
@@ -44,7 +51,7 @@ class MovieDetailViewModel : ViewModel() {
 
                     var title:String = movieData.originalTitle
 
-                    //Log.d("tag", movieData.originalTitle)
+                    Log.d("tag", movieData.originalTitle)
                 }
 
 

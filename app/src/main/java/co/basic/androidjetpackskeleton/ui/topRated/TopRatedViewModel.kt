@@ -31,7 +31,7 @@ class TopRatedViewModel : ViewModel() {
 
         val api: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
 
-        val call: Call<ApiResponse> = api.getTopRated(GlobalValues().apiKey, 1)
+        val call: Call<ApiResponse> = api.getTopRated(GlobalValues.apiKey, 1)
         call.enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
 

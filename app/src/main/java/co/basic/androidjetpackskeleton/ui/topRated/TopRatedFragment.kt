@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.basic.androidjetpackskeleton.R
 import co.basic.androidjetpackskeleton.adapters.RecyclerViewAdapter
+import co.basic.androidjetpackskeleton.model.Data
+import co.basic.androidjetpackskeleton.ui.newRelease.OnItemClickListener
+import java.util.ArrayList
 
-class TopRatedFragment : Fragment() {
+class TopRatedFragment : Fragment(),RecyclerViewAdapter.ClickListener,OnItemClickListener {
 
     private lateinit var topRatedViewModel: TopRatedViewModel
 
@@ -39,7 +42,7 @@ class TopRatedFragment : Fragment() {
 
             it?.let {
 
-                adapter = context?.let { it1 -> RecyclerViewAdapter(it1, it.results) }
+                adapter = context?.let { it1 -> RecyclerViewAdapter(it1, it.results,this) }
                 rvTopMovies?.adapter = adapter
             }?.run { Toast.makeText(context, "Network Error!!", Toast.LENGTH_SHORT).show() }
 
@@ -48,4 +51,14 @@ class TopRatedFragment : Fragment() {
 
         return root
     }
+
+    override fun onClickListener(item: ArrayList<Data>) {
+        Toast.makeText(context, "worked in top!", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun <T> onItemClick(position: Int, data: T) {
+        //TODO("Not yet implemented")
+    }
+
+
 }

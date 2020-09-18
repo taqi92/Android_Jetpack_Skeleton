@@ -21,7 +21,7 @@ public interface ApiInterface {
     Call<ApiResponse>getUpcoming(@Query("api_key") String apiKey, @Query("page")int page);
 
     @GET("https://api.themoviedb.org/3/movie/{movie_id}")
-    Call<MovieDetail>getMovieDetail(@Path("movie_id")String movieId,@Query("api_key")String apiKey);
+    Call<MovieDetail>getMovieDetail(@Path("movie_id")int movieId,@Query("api_key")String apiKey);
 
 
 

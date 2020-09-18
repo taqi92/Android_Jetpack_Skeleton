@@ -35,13 +35,13 @@ class NewReleaseViewModel : ViewModel() {
 
 
     //This method is using Retrofit to get the JSON data from URL
-    private fun loadMovies() {
+     fun loadMovies() {
 
 
         val api: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
 
 
-        val call: Call<ApiResponse> = api.getNewReleased(GlobalValues().apiKey, 1)
+        val call: Call<ApiResponse> = api.getNewReleased(GlobalValues.apiKey, 1)
         call.enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
 
