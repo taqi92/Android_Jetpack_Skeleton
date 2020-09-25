@@ -14,17 +14,22 @@ import retrofit2.Response
 
 class MovieDetailViewModel : ViewModel() {
 
-    private var movieDetail: MutableLiveData<MovieDetail>? = null
+    var movieDetail: MutableLiveData<MovieDetail>? = null
 
 
-    var movie : Int = 0
+    var movie: Int = 0
 
     fun getMovieDetail(movieId: Int): LiveData<MovieDetail>? {
 
 
         this.movie = movieId
 
-        loadData(movieId)
+        if (movieDetail == null) {
+
+            movieDetail = MutableLiveData<MovieDetail>()
+            loadData(movieId)
+        }
+
 
         return movieDetail
     }
@@ -34,14 +39,9 @@ class MovieDetailViewModel : ViewModel() {
 
         val api: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
 
-        val call: Call<MovieDetail> = api.getMovieDetail(movieId,GlobalValues.apiKey)
+        val call: Call<MovieDetail> = api.getMovieDetail(movieId, GlobalValues.apiKey)
         call.enqueue(object : Callback<MovieDetail> {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
-
-
-                /*val movieData = response.body() as MovieDetail
-
-                movieDetail!!.value = movieData*/
 
                 if (response.isSuccessful) {
 
@@ -49,9 +49,6 @@ class MovieDetailViewModel : ViewModel() {
 
                     movieDetail?.postValue(movieData)
 
-                    var title:String = movieData.originalTitle
-
-                    Log.d("tag", movieData.originalTitle)
                 }
 
 

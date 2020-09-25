@@ -50,7 +50,6 @@ class NewReleaseViewModel : ViewModel() {
                // movieData?.let { movieList?.postValue(movieData) }
 
                 movieList!!.value = movieData
-                Log.d("api",movieList?.value.toString())
             }
 
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {

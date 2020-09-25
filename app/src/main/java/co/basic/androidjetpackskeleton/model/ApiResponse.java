@@ -15,6 +15,7 @@ public class ApiResponse {
     @SerializedName("total_pages")
     private String totalPages;
 
+
     public ArrayList<Data> getResults() {
         return results;
     }

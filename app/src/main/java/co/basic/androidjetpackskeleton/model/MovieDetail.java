@@ -24,8 +24,8 @@ public class MovieDetail {
     @SerializedName("popularity")
     private double popularity;
 
-    @SerializedName("poster_path")
-    private String posterPath;
+    @SerializedName("backdrop_path")
+    private String BackDropPath;
 
     @SerializedName("production_companies")
     private ArrayList<productionCompanies>productionCompanies;
@@ -41,6 +41,14 @@ public class MovieDetail {
 
     @SerializedName("vote_average")
     private float voteAverage;
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    @SerializedName("vote_count")
+    private int voteCount;
+
 
     public int getBudget() {
         return budget;
@@ -66,8 +74,8 @@ public class MovieDetail {
         return popularity;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getBackDropPath() {
+        return BackDropPath;
     }
 
     public ArrayList<co.basic.androidjetpackskeleton.model.productionCompanies> getProductionCompanies() {

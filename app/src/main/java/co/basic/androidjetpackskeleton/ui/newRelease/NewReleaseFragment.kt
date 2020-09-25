@@ -8,15 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.basic.androidjetpackskeleton.R
 import co.basic.androidjetpackskeleton.activities.MovieDetailActivity
 import co.basic.androidjetpackskeleton.adapters.RecyclerViewAdapter
 import co.basic.androidjetpackskeleton.model.Data
-import co.basic.androidjetpackskeleton.model.MovieDetail
-import java.util.ArrayList
 
 class NewReleaseFragment : Fragment(), OnItemClickListener {
 
@@ -54,23 +51,20 @@ class NewReleaseFragment : Fragment(), OnItemClickListener {
         })
 
 
-
-
         return root
     }
 
 
-
     override fun <T> onItemClick(position: Int, itemObj: T) {
 
-        val  itemData = itemObj as Data
-        Toast.makeText(context, "kam hoise! "+ itemData.id+" "+position, Toast.LENGTH_LONG).show()
+        val itemData = itemObj as Data
+        //Toast.makeText(context, "kam hoise! "+ itemData.id+" "+position, Toast.LENGTH_LONG).show()
 
 
-
-      activity?.startActivity( Intent(activity, MovieDetailActivity::class.java)
-          .putExtra("MOVIE_ID",itemData.id))
-
+        activity?.startActivity(
+            Intent(activity, MovieDetailActivity::class.java)
+                .putExtra("MOVIE_ID", itemData.id)
+        )
 
 
     }

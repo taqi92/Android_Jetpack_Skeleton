@@ -53,9 +53,7 @@ class RecyclerViewAdapter(
         Picasso.get().load(ApiClient.IMAGE_URL + image).into(viewHolder.ivListItem)
 
         viewHolder.itemView.setOnClickListener {
-            //TODO:  call method of Caller Class
 
-            //listener.onClickListener(dataList)
             listener.onItemClick(
                 viewHolder.adapterPosition,
                 dataList.get(viewHolder.adapterPosition)
