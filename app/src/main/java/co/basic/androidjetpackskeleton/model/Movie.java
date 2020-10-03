@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class MovieDetail {
+public class Movie {
 
     @SerializedName("budget")
     private int budget;
@@ -98,7 +98,7 @@ public class MovieDetail {
         return voteAverage;
     }
 
-    public MovieDetail() {
+    public Movie() {
     }
 
 

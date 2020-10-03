@@ -1,18 +1,15 @@
 package co.basic.androidjetpackskeleton.ui.newRelease
 
-import android.util.Log
+import android.nfc.tech.MifareUltralight.PAGE_SIZE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import co.basic.androidjetpackskeleton.GlobalValues
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import co.basic.androidjetpackskeleton.ItemDataSource
+import co.basic.androidjetpackskeleton.ItemDataSourceFactory
 import co.basic.androidjetpackskeleton.model.ApiResponse
-import co.basic.androidjetpackskeleton.model.Data
-import co.basic.androidjetpackskeleton.networking.ApiClient
-import co.basic.androidjetpackskeleton.networking.ApiInterface
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.*
+import co.basic.androidjetpackskeleton.model.Movie
 
 class NewReleaseViewModel : ViewModel() {
 
@@ -38,8 +35,7 @@ class NewReleaseViewModel : ViewModel() {
      fun loadMovies() {
 
 
-        val api: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
-
+       /* val api: ApiInterface = ApiClient.getClient().create(ApiInterface::class.java)
 
         val call: Call<ApiResponse> = api.getNewReleased(GlobalValues.apiKey, 1)
         call.enqueue(object : Callback<ApiResponse> {
@@ -56,7 +52,20 @@ class NewReleaseViewModel : ViewModel() {
                 Log.d("api","failure")
                 movieList!!.value=null
             }
-        })
+        })*/
+    }
+
+    fun newReleaseMovies():LiveData<PagedList<Movie>>  {
+        val itemDataSourceFactory = ItemDataSourceFactory()
+        val liveDataSource = itemDataSourceFactory.dataSourceLiveData
+
+        val config= PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setPageSize(ItemDataSource.PAGE_SIZE)
+            .build()
+
+       return LivePagedListBuilder(itemDataSourceFactory, config).build()
+
     }
 
 }

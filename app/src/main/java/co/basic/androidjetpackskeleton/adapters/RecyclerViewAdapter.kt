@@ -14,7 +14,6 @@ import co.basic.androidjetpackskeleton.activities.MainActivity
 import co.basic.androidjetpackskeleton.activities.MovieDetailActivity
 import co.basic.androidjetpackskeleton.model.Data
 import co.basic.androidjetpackskeleton.networking.ApiClient
-import co.basic.androidjetpackskeleton.ui.newRelease.NewReleaseFragmentDirections
 import co.basic.androidjetpackskeleton.ui.newRelease.OnItemClickListener
 import com.squareup.picasso.Picasso
 import java.util.*
