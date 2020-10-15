@@ -16,6 +16,7 @@ import co.basic.androidjetpackskeleton.activities.MovieDetailActivity
 import co.basic.androidjetpackskeleton.adapters.PagedMovieAdapter
 import co.basic.androidjetpackskeleton.adapters.RecyclerViewAdapter
 import co.basic.androidjetpackskeleton.model.Data
+import co.basic.androidjetpackskeleton.model.Movie
 import kotlinx.android.synthetic.main.fragment_new_release.*
 
 class NewReleaseFragment : Fragment(), OnItemClickListener {
@@ -23,6 +24,7 @@ class NewReleaseFragment : Fragment(), OnItemClickListener {
 
     private lateinit var newReleasedViewModel: NewReleaseViewModel
     private lateinit var adapter: PagedMovieAdapter
+    private var rvMovieList: RecyclerView? = null
 
 
     override fun onCreateView(
@@ -35,9 +37,13 @@ class NewReleaseFragment : Fragment(), OnItemClickListener {
             ViewModelProviders.of(this).get(NewReleaseViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_new_release, container, false)
 
+        rvMovieList = root.findViewById(R.id.rvMovieList)
+
+        rvMovieList!!.setHasFixedSize(false)
+
         rvMovieList!!.layoutManager = GridLayoutManager(context, 2)
         adapter = PagedMovieAdapter(this)
-        rvMovieList.adapter = adapter
+        rvMovieList!!.adapter = adapter
 
         newReleasedViewModel.newReleaseMovies().observe(viewLifecycleOwner, Observer {
 
@@ -51,7 +57,7 @@ class NewReleaseFragment : Fragment(), OnItemClickListener {
 
     override fun <T> onItemClick(position: Int, itemObj: T) {
 
-        val itemData = itemObj as Data
+        val itemData = itemObj as Movie
         //Toast.makeText(context, "kam hoise! "+ itemData.id+" "+position, Toast.LENGTH_LONG).show()
 
 

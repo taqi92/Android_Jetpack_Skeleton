@@ -1,5 +1,6 @@
 package co.basic.androidjetpackskeleton.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.inflate
@@ -23,8 +24,9 @@ class PagedMovieAdapter(val listener: OnItemClickListener) :
             override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
                 oldItem.id == newItem.id
 
+            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-                oldItem.equals(newItem)
+                oldItem == newItem
 
         }
     }
@@ -40,7 +42,9 @@ class PagedMovieAdapter(val listener: OnItemClickListener) :
 
     override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
 
-        //Picasso.get().load(ApiClient.IMAGE_URL + image).into(viewHolder.ivListItem)
+        val image = getItem(position)?.backDropPath?.substring(1)
+
+        Picasso.get().load(ApiClient.IMAGE_URL + image).into(viewHolder.ivListItem)
         //TODO: Show image poster
 
         viewHolder.itemView.setOnClickListener {

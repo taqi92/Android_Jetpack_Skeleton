@@ -17,6 +17,8 @@ class NewReleaseViewModel : ViewModel() {
     //this is the data that we will fetch asynchronously
     private var movieList: MutableLiveData<ApiResponse>? = null
 
+    private lateinit var liveDataSource: LiveData<ItemDataSource>
+
     //we will call this method to get the data
     fun getMovies(): LiveData<ApiResponse>? {
         //if the list is null
@@ -57,7 +59,7 @@ class NewReleaseViewModel : ViewModel() {
 
     fun newReleaseMovies():LiveData<PagedList<Movie>>  {
         val itemDataSourceFactory = ItemDataSourceFactory()
-        val liveDataSource = itemDataSourceFactory.dataSourceLiveData
+        liveDataSource = itemDataSourceFactory.dataSourceLiveData
 
         val config= PagedList.Config.Builder()
             .setEnablePlaceholders(false)

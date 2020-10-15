@@ -16,7 +16,7 @@ public class ItemViewModel extends ViewModel {
     public ItemViewModel() {
 
         ItemDataSourceFactory itemDataSourceFactory = new ItemDataSourceFactory();
-        liveDataSource = itemDataSourceFactory.getItemLiveDataSource();
+        //liveDataSource = itemDataSourceFactory.getItemLiveDataSource();
 
         PagedList.Config config =
                 (new PagedList.Config.Builder())
