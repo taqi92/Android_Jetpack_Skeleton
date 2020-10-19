@@ -4,8 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import co.basic.androidjetpackskeleton.GlobalValues
 import co.basic.androidjetpackskeleton.model.ApiResponse
+import co.basic.androidjetpackskeleton.model.Movie
 import co.basic.androidjetpackskeleton.networking.ApiClient
 import co.basic.androidjetpackskeleton.networking.ApiInterface
 import retrofit2.Call
@@ -14,9 +17,12 @@ import retrofit2.Response
 
 class TopRatedViewModel : ViewModel() {
 
-    private var topMovieList: MutableLiveData<ApiResponse>? = null
+    private var topMovieList: LiveData<TopRatedDataSource>? = null
 
-    fun getTopMovies(): LiveData<ApiResponse>? {
+
+    /****this example can be used without pagination****************/
+
+    /*fun getTopMovies(): LiveData<ApiResponse>? {
 
         if (topMovieList == null) {
 
@@ -48,6 +54,20 @@ class TopRatedViewModel : ViewModel() {
                 topMovieList!!.value = null
             }
         })
+    }*/
+
+    /********With pagination******/
+
+    fun topRatedMovies(): LiveData<PagedList<Movie>> {
+
+        val topRatedDataSourceFactory = TopRatedDataSourceFactory()
+
+        topMovieList = topRatedDataSourceFactory.topRatedDataSourceliveData
+
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false).setPageSize(TopRatedDataSource.PAGE_SIZE).build()
+
+        return LivePagedListBuilder(topRatedDataSourceFactory, config).build()
     }
 
 

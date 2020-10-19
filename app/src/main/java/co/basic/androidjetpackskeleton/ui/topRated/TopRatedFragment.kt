@@ -1,10 +1,10 @@
 package co.basic.androidjetpackskeleton.ui.topRated
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,17 +12,20 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.basic.androidjetpackskeleton.R
+import co.basic.androidjetpackskeleton.activities.MovieDetailActivity
 import co.basic.androidjetpackskeleton.adapters.RecyclerViewAdapter
 import co.basic.androidjetpackskeleton.model.Data
-import co.basic.androidjetpackskeleton.ui.newRelease.OnItemClickListener
+import co.basic.androidjetpackskeleton.OnItemClickListener
+import co.basic.androidjetpackskeleton.adapters.PagedMovieAdapter
+import co.basic.androidjetpackskeleton.model.Movie
 import java.util.ArrayList
 
-class TopRatedFragment : Fragment(),RecyclerViewAdapter.ClickListener,OnItemClickListener {
+class TopRatedFragment : Fragment(), OnItemClickListener {
 
     private lateinit var topRatedViewModel: TopRatedViewModel
 
     private var rvTopMovies: RecyclerView? = null
-    private var adapter: RecyclerViewAdapter? = null
+    private lateinit var topRatedAdapter: PagedMovieAdapter
 
 
     override fun onCreateView(
@@ -37,8 +40,16 @@ class TopRatedFragment : Fragment(),RecyclerViewAdapter.ClickListener,OnItemClic
         rvTopMovies = root.findViewById(R.id.rv_top_rated)
 
         rvTopMovies!!.layoutManager = GridLayoutManager(context, 2)
+        topRatedAdapter = PagedMovieAdapter(this)
+        rvTopMovies!!.adapter = topRatedAdapter
 
-        topRatedViewModel.getTopMovies()?.observe(viewLifecycleOwner, {
+        topRatedViewModel.topRatedMovies()
+            .observe(viewLifecycleOwner, Observer { topRatedAdapter.submitList(it) })
+
+
+        /**********example for without pagination************/
+
+        /*topRatedViewModel.getTopMovies()?.observe(viewLifecycleOwner, {
 
             it?.let {
 
@@ -46,18 +57,21 @@ class TopRatedFragment : Fragment(),RecyclerViewAdapter.ClickListener,OnItemClic
                 rvTopMovies?.adapter = adapter
             }?.run { Toast.makeText(context, "Network Error!!", Toast.LENGTH_SHORT).show() }
 
-        })
+        })*/
 
 
         return root
     }
 
-    override fun onClickListener(item: ArrayList<Data>) {
-        Toast.makeText(context, "worked in top!", Toast.LENGTH_SHORT).show()
-    }
 
     override fun <T> onItemClick(position: Int, data: T) {
-        //TODO("Not yet implemented")
+        val itemData = data as Movie
+
+
+        activity?.startActivity(
+            Intent(activity, MovieDetailActivity::class.java)
+                .putExtra("MOVIE_ID", itemData.id)
+        )
     }
 
 

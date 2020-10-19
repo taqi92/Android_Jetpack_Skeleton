@@ -3,17 +3,15 @@ package co.basic.androidjetpackskeleton.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import co.basic.androidjetpackskeleton.R
 import co.basic.androidjetpackskeleton.model.Movie
 import co.basic.androidjetpackskeleton.networking.ApiClient
-import co.basic.androidjetpackskeleton.ui.newRelease.OnItemClickListener
+import co.basic.androidjetpackskeleton.OnItemClickListener
 import com.squareup.picasso.Picasso
 
 class PagedMovieAdapter(val listener: OnItemClickListener) :
@@ -42,10 +40,9 @@ class PagedMovieAdapter(val listener: OnItemClickListener) :
 
     override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
 
-        val image = getItem(position)?.backDropPath?.substring(1)
+        val image = getItem(position)?.posterPath?.substring(1)
 
         Picasso.get().load(ApiClient.IMAGE_URL + image).into(viewHolder.ivListItem)
-        //TODO: Show image poster
 
         viewHolder.itemView.setOnClickListener {
 

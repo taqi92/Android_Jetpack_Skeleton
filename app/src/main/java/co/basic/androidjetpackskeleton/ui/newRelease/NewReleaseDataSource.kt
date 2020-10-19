@@ -1,7 +1,8 @@
-package co.basic.androidjetpackskeleton
+package co.basic.androidjetpackskeleton.ui.newRelease
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
+import co.basic.androidjetpackskeleton.GlobalValues
 import co.basic.androidjetpackskeleton.model.Movie
 import co.basic.androidjetpackskeleton.model.PagedMovieList
 import co.basic.androidjetpackskeleton.networking.ApiClient
@@ -10,9 +11,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ItemDataSource : PageKeyedDataSource<Int, Movie>() {
+class NewReleaseDataSource : PageKeyedDataSource<Int, Movie>() {
 
-    private val TAG = "ItemDataSource"
+    private val TAG = "NewReleaseItemDataSource"
 
     companion object {
         val PAGE_SIZE = 50

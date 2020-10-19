@@ -5,25 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.basic.androidjetpackskeleton.OnItemClickListener
 import co.basic.androidjetpackskeleton.R
 import co.basic.androidjetpackskeleton.activities.MovieDetailActivity
 import co.basic.androidjetpackskeleton.adapters.PagedMovieAdapter
-import co.basic.androidjetpackskeleton.adapters.RecyclerViewAdapter
-import co.basic.androidjetpackskeleton.model.Data
 import co.basic.androidjetpackskeleton.model.Movie
-import kotlinx.android.synthetic.main.fragment_new_release.*
 
 class NewReleaseFragment : Fragment(), OnItemClickListener {
 
 
     private lateinit var newReleasedViewModel: NewReleaseViewModel
-    private lateinit var adapter: PagedMovieAdapter
+    private lateinit var newReleaseAdapter: PagedMovieAdapter
     private var rvMovieList: RecyclerView? = null
 
 
@@ -42,12 +39,12 @@ class NewReleaseFragment : Fragment(), OnItemClickListener {
         rvMovieList!!.setHasFixedSize(false)
 
         rvMovieList!!.layoutManager = GridLayoutManager(context, 2)
-        adapter = PagedMovieAdapter(this)
-        rvMovieList!!.adapter = adapter
+        newReleaseAdapter = PagedMovieAdapter(this)
+        rvMovieList!!.adapter = newReleaseAdapter
 
         newReleasedViewModel.newReleaseMovies().observe(viewLifecycleOwner, Observer {
 
-            adapter.submitList(it)
+            newReleaseAdapter.submitList(it)
         })
 
 
@@ -58,7 +55,6 @@ class NewReleaseFragment : Fragment(), OnItemClickListener {
     override fun <T> onItemClick(position: Int, itemObj: T) {
 
         val itemData = itemObj as Movie
-        //Toast.makeText(context, "kam hoise! "+ itemData.id+" "+position, Toast.LENGTH_LONG).show()
 
 
         activity?.startActivity(

@@ -28,10 +28,10 @@ public class Movie {
     private String BackDropPath;
 
     @SerializedName("production_companies")
-    private ArrayList<productionCompanies>productionCompanies;
+    private ArrayList<productionCompanies> productionCompanies;
 
     @SerializedName("production_countries")
-    private ArrayList<productionCountries>productionCountries;
+    private ArrayList<productionCountries> productionCountries;
 
     @SerializedName("release_date")
     private String releaseDate;
@@ -49,6 +49,12 @@ public class Movie {
     @SerializedName("vote_count")
     private int voteCount;
 
+    @SerializedName("poster_path")
+    private String posterPath;
+
+    public String getPosterPath() {
+        return posterPath;
+    }
 
     public int getBudget() {
         return budget;

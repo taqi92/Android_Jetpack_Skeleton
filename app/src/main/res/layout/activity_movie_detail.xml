@@ -25,17 +25,17 @@
         android:id="@+id/tvOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:gravity="center"
+        android:gravity="start"
         android:text="TextView"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/ivPosterPath" />
 
     <TextView
@@ -122,16 +122,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="#878383"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBudget" />
-
-    <View
         android:id="@+id/view2"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
@@ -140,19 +130,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOverview" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Similler Movies"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -260,6 +237,17 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <Button
+            android:id="@+id/tvFavourite"
+            android:layout_width="47dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp"
+            android:background="@drawable/ic_baseline_favorite_white_24"
+            app:layout_constraintEnd_toStartOf="@+id/tvVoteAvg"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline

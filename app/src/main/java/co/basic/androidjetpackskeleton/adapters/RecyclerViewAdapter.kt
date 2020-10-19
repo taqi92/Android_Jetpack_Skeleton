@@ -1,20 +1,15 @@
 package co.basic.androidjetpackskeleton.adapters
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import co.basic.androidjetpackskeleton.R
-import co.basic.androidjetpackskeleton.activities.MainActivity
-import co.basic.androidjetpackskeleton.activities.MovieDetailActivity
 import co.basic.androidjetpackskeleton.model.Data
 import co.basic.androidjetpackskeleton.networking.ApiClient
-import co.basic.androidjetpackskeleton.ui.newRelease.OnItemClickListener
+import co.basic.androidjetpackskeleton.OnItemClickListener
 import com.squareup.picasso.Picasso
 import java.util.*
 

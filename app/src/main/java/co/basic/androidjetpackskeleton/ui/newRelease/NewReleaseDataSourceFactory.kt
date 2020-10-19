@@ -1,18 +1,17 @@
-package co.basic.androidjetpackskeleton
+package co.basic.androidjetpackskeleton.ui.newRelease
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import androidx.paging.PageKeyedDataSource
 import co.basic.androidjetpackskeleton.model.Movie
 
-class ItemDataSourceFactory :
+class NewReleaseDataSourceFactory :
     DataSource.Factory<Int, Movie>() {
 
-    val dataSourceLiveData = MutableLiveData<ItemDataSource>()
+    val dataSourceLiveData = MutableLiveData<NewReleaseDataSource>()
 
     override fun create(): DataSource<Int, Movie> {
 
-        val itemDataSource = ItemDataSource()
+        val itemDataSource = NewReleaseDataSource()
         dataSourceLiveData.postValue(itemDataSource)
         return itemDataSource
     }
